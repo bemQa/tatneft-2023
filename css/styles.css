@@ -839,6 +839,10 @@ body {
     z-index: 11;
 }
 
+.header .logo {
+    margin-right: 40rem;
+}
+
 .end-event-countdown {
     display: flex;
     align-items: baseline;
@@ -1406,10 +1410,6 @@ body {
     display: block;
 }
 
-.table {
-
-}
-
 .table-col {
     padding: 12rem 40rem;
     font-size: 18rem;
@@ -1729,6 +1729,242 @@ body {
     left: 80rem;
 }
 
+.lk-page {
+    background: #fff;
+}
+
+.lk-page .header {
+    top: 0;
+    max-width: 100%;
+    background: #F4F4F4;
+    border-radius: 0 0 16rem 16rem;
+}
+
+.lk-page .header-container {
+    max-width: 100%;
+}
+
+.lk-page .header .logo {
+    margin-right: 160rem;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 320rem;
+    width: 100%;
+    margin-left: auto;
+}
+
+.header-menu-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 12rem 6rem 44rem;
+    background: transparent;
+    border-radius: 4rem;
+    font-size: 24rem;
+    line-height: 1;
+    letter-spacing: 0.24rem;
+    color: #000;
+}
+
+.header-menu-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12rem;
+    bottom: 0;
+    margin: auto;
+    width: 24rem;
+    height: 24rem;
+    transition: all .3s ease;
+}
+
+.header-menu-link.bonuses-link::before {
+    background: url(../img/icon-gift.svg) center/contain no-repeat;
+}
+
+.header-menu-link.transactions-link::before {
+    background: url(../img/icon-money.svg) center/contain no-repeat;
+}
+
+.header-menu-link:hover {
+    color: #84BD00;
+}
+
+.header-menu-link.active {
+    background: #84BD00;
+    color: #fff;
+}
+
+.header-menu-link.bonuses-link:hover::before {
+    background: url(../img/icon-gift-hover.svg) center/contain no-repeat;
+}
+
+.header-menu-link.bonuses-link.active::before {
+    background: url(../img/icon-gift-active.svg) center/contain no-repeat;
+}
+
+.header-menu-link.transactions-link:hover::before {
+    background: url(../img/icon-money-hover.svg) center/contain no-repeat;
+}
+
+.header-menu-link.transactions-link.active::before {
+    background: url(../img/icon-money-active.svg) center/contain no-repeat;
+}
+
+.header-links {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 290rem;
+    width: 100%;
+    margin-left: auto;
+    z-index: 11;
+}
+
+.profile-name {
+    max-width: 240rem;
+    font-size: 18rem;
+    line-height: 1.3;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logout-link {
+    position: relative;
+    display: block;
+    margin-left: 16rem;
+    font-size: 18rem;
+    line-height: 1.3;
+    color: #E4002B;
+}
+
+.logout-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -8rem;
+    width: 1rem;
+    height: 100%;
+    background: #AAA;
+}
+
+.logout-link:hover {
+    color: #84BD00;
+}
+
+.lk-page .game-mainpage-block {
+    background: #84BD00;
+}
+
+.lk-page .game-mainpage-info {
+    color: #fff;
+}
+
+.my-bonuses-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48rem;
+    color: #000;
+}
+
+.my-bonuses-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.my-bonuses-text {
+    margin-bottom: 8rem;
+    font-weight: 400;
+    font-size: 32rem;
+    line-height: 1;
+}
+
+.my-bonuses-team {
+    font-weight: 400;
+    font-size: 18rem;
+    line-height: 1.3;
+}
+
+.bonuses-all-stat {
+    display: flex;
+    flex-direction: column;
+    max-width: 710rem;
+    width: 100%;
+}
+
+.bonuses-progress-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 20rem;
+    background: #F4F4F4;
+    border-radius: 16rem;
+    overflow: hidden;
+}
+
+.bonuses-progress-green-team {
+    height: 20rem;
+    background: #84BD00;
+    transition: all .3s ease-in;
+}
+
+.bonuses-progress-red-team {
+    height: 20rem;
+    background: #E4002B;
+    transition: all .3s ease-in;
+}
+
+.bonuses-teams {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16rem;
+    font-weight: 400;
+    font-size: 18rem;
+    line-height: 1.3;
+    color: #000;
+}
+
+.bonuses-green-team,
+.bonuses-red-team {
+    position: relative;
+    padding-left: 32rem;
+}
+
+.bonuses-green-team::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20rem;
+    height: 20rem;
+    background: #84BD00;
+    border-radius: 20rem;
+}
+
+.bonuses-red-team::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20rem;
+    height: 20rem;
+    background: #E4002B;
+    border-radius: 20rem;
+}
+
+.lk-page .footer {
+    background: #F4F4F4;
+}
+
 /*end main styles*/
 
 /*adaptive styles*/
@@ -1788,6 +2024,10 @@ body {
     .header {
         top: 8rem;
         max-width: calc(100% - 40rem);
+    }
+
+    .header .logo {
+        margin-right: 0;
     }
 
     .menu {
@@ -1958,6 +2198,42 @@ body {
     .main-text span {
         font-size: 24rem;
     }
+
+    .lk-page .header .logo {
+        margin-right: 108rem;
+    }
+
+    .my-bonuses-block {
+        flex-direction: column;
+        margin-bottom: 40rem;
+    }
+
+    .my-bonuses-info {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        order: 1;
+    }
+
+    .my-bonuses-text {
+        margin-bottom: 0;
+    }
+
+    .bonuses-all-stat {
+        max-width: 100%;
+        margin-bottom: 20rem;
+    }
+
+    .lk-page .game-mainpage-info .page-title {
+        max-width: 600rem;
+        font-size: 60rem;
+        letter-spacing: 0.6rem;
+    }
+
+    .lk-page .game-mainpage-text {
+        font-size: 24rem;
+        letter-spacing: 0.24rem;
+    }
 }
 /*end laptop styles*/
 
@@ -2123,6 +2399,95 @@ body {
     .main-text span {
         font-size: 18rem;
     }
+
+    .lk-page .header {
+        height: 115rem;
+    }
+
+    .lk-page .header-container {
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .lk-page .header .logo {
+        margin-right: 0;
+    }
+
+    .header-menu {
+        order: 1;
+        max-width: 100%;
+        margin: 16rem auto 0;
+    }
+
+    .header-menu-link {
+        width: 100%;
+        font-size: 18rem;
+    }
+
+    .header-menu-link::before {
+        position: relative;
+        top: auto;
+        left: auto;
+        bottom: auto;
+        margin: 0 8rem 0 -30rem;
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .profile-name,
+    .logout-link {
+        font-size: 16rem;
+    }
+
+    .my-bonuses-text {
+        font-size: 24rem;
+    }
+
+    .my-bonuses-team {
+        font-size: 16rem;
+    }
+
+    .bonuses-progress-bar,
+    .bonuses-progress-green-team {
+        height: 12rem;
+    }
+
+    .bonuses-teams {
+        font-size: 16rem;
+    }
+
+    .bonuses-green-team, 
+    .bonuses-red-team {
+        padding-left: 16rem;
+    }
+
+    .bonuses-green-team::before,
+    .bonuses-red-team::before {
+        bottom: 0;
+        margin: auto;
+        width: 12rem;
+        height: 12rem;
+    }
+
+    .lk-page .game-mainpage-block {
+        padding-top: 32rem;
+        padding-bottom: 254rem;
+    }
+
+    .lk-page .game-mainpage-block::before {
+        height: 232rem;
+    }
+
+    .lk-page .game-mainpage-info .page-title {
+        max-width: 340rem;
+        font-size: 24rem;
+        letter-spacing: 0;
+    }
+
+    .lk-page .game-mainpage-text {
+        font-size: 18rem;
+        letter-spacing: 0;
+    }
 }
 
 @media (max-width: 375px) {
@@ -2156,6 +2521,14 @@ body {
     .main-block::before {
         top: -40rem;
         right: -64rem;
+    }
+
+    .header-links {
+        max-width: 230rem;
+    }
+
+    .profile-name {
+        max-width: 182rem;
     }
 }
 /*end mobile styles*/
