@@ -5,6 +5,21 @@ $(window).scroll(function(evt) {
 });
 
 $(document).ready(function() {
+    // анимация меню
+    $('.menu').click(function(e){
+        e.preventDefault();
+        (this.classList.contains('active') === true) ? this.classList.remove('active') : this.classList.add('active');
+
+        $('.header').toggleClass('active');
+        $('body').on('click', function (e) {
+            let div = $('.menu-links-wrapper, .menu');
+
+            if (!div.is(e.target) && div.has(e.target).length === 0) {
+                $('.header, .menu').removeClass('active');
+            }
+        });
+    });
+    
     // якоря для ссылок
     $('.anchor[href^="#"]').click(function () {
         $('.header').removeClass('active'); 
@@ -58,18 +73,18 @@ $(document).ready(function() {
                 },
                 messages: {
                     phone: {
-                        required: 'Заполните поле',
+                        required: 'Поле обязательно для заполнения',
                         phone: 'Некорректный номер'
                     },
                     email: {
-                        required: 'Заполните поле',
+                        required: 'Поле обязательно для заполнения',
                         email: 'Некорректный e-mail'
                     },
                     name: {
-                        required: 'Заполните поле'
+                        required: 'Поле обязательно для заполнения'
                     },
                     text: {
-                        required: 'Заполните поле'
+                        required: 'Поле обязательно для заполнения'
                     }
                 }
             });
@@ -106,6 +121,10 @@ $(document).ready(function() {
                 $parent.removeClass('active');
                 content.slideUp('fast');
             } else {
+                accordion.removeClass('active');
+                accordion.parent().removeClass('active');
+                accordion.next().slideUp('fast');
+
                 $this.addClass('active');
                 $parent.addClass('active');
                 content.slideDown('fast');
@@ -144,4 +163,55 @@ $(document).ready(function() {
             type: 'inline'
         });
     });
+
+    // табы
+    $('.winners-week-tab-trigger').click(function(e){
+        e.preventDefault();
+        $('.winners-week-tab-trigger').removeClass('active');
+        var tab = $(this).data('tab');
+        $('.winners-week-tab').removeClass('active');
+        $(this).addClass('active');
+        $('.winners-week-tab-item').removeClass('active');
+        $('.winners-week-tab-item[data-tab="'+ tab +'"]').addClass('active');
+    });
+    $('.winners-prizes-tab-trigger').click(function(e){
+        e.preventDefault();
+        $('.winners-prizes-tab-trigger').removeClass('active');
+        var tab = $(this).data('tab');
+        $('.winners-prizes-tab').removeClass('active');
+        $(this).addClass('active');
+        $('.winners-prizes-tab-item').removeClass('active');
+        $('.winners-prizes-tab-item[data-tab="'+ tab +'"]').addClass('active');
+
+        $('.winners-week-tabs').removeClass('active');
+        $('.winners-week-tabs[data-tab="'+ tab +'"]').addClass('active');
+    });
+
+    // слайдер табы победителей 
+    let slider_winners_tabs = $('.winners-week-tabs');
+    if (slider_winners_tabs.length) {
+        slider_winners_tabs.owlCarousel({
+            center: false,
+            items: 4,
+            autoWidth: true,
+            loop: false,
+            nav: true,
+            dots: false,
+            margin: 0,
+            mouseDrag: true,
+            touchDrag: true,
+            navSpeed: 1300,
+            responsive: {
+                0: {
+                    items: 3
+                },
+                480: {
+                    items: 5
+                },
+                768: {
+                    items: 4
+                }
+            }
+        });
+    }
 });
