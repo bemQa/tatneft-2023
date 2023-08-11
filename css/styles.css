@@ -1965,6 +1965,24 @@ body {
     background: #F4F4F4;
 }
 
+.lk-title {
+    margin-bottom: 24rem;
+    font-weight: 400;
+    font-size: 32rem;
+    line-height: 1;
+    color: #000;
+}
+
+.transaction-table .table-col {
+    width: 180rem;
+    min-width: 180rem;
+}
+
+.transaction-table .table-col:last-child {
+    width: 200rem;
+    min-width: 200rem;
+}
+
 /*end main styles*/
 
 /*adaptive styles*/
@@ -2392,6 +2410,12 @@ body {
         border-radius: 0 0 16rem 16rem;
     }
 
+    .main-block::before {
+        top: -40rem;
+        width: 300rem;
+        height: 300rem;
+    }
+
     .main-text + .main-text {
         margin-bottom: 20rem;
     }
@@ -2488,6 +2512,20 @@ body {
         font-size: 18rem;
         letter-spacing: 0;
     }
+
+    .lk-title {
+        margin-bottom: 8rem;
+    }
+
+    .transaction-table .table-col {
+        width: 100rem;
+        min-width: 100rem;
+    }
+
+    .transaction-table .table-col:last-child {
+        width: 130rem;
+        min-width: 130rem;
+    }
 }
 
 @media (max-width: 375px) {
@@ -2529,6 +2567,30 @@ body {
 
     .profile-name {
         max-width: 182rem;
+    }
+
+    .section-lk-transactions .container {
+        padding: 0;
+    }
+
+    .lk-title {
+        padding: 0 20rem;
+    }
+
+    .transaction-table .table-col {
+        width: 86rem;
+        min-width: 86rem;
+        padding: 12rem 0;
+    }
+
+    .transaction-table .table-col:first-child {
+        padding-left: 8rem;
+    }
+
+    .transaction-table .table-col:last-child {
+        width: 116rem;
+        min-width: 116rem;
+        padding-right: 8rem;
     }
 }
 /*end mobile styles*/
