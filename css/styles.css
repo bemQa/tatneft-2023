@@ -1066,7 +1066,7 @@ body {
 }
 
 .faq-wrap {
-    max-height: 400rem;
+    max-height: 430rem;
 }
 
 .feedback-block-text {
@@ -1130,7 +1130,7 @@ body {
 
 .faq-item.active .faq-item-title::after {
     background: url(../img/icon-plus.svg) center/contain no-repeat;
-    transform: rotate(-180deg);
+    transform: rotate(-45deg);
 }
 
 .faq-item.active .faq-item-title {
@@ -1232,7 +1232,7 @@ body {
 .winners-week-tabs {
     position: relative;
     display: none !important;
-    max-width: 520rem;
+    max-width: 830rem;
     width: 100%;
     min-height: 48rem;
 }
@@ -1767,6 +1767,15 @@ body {
     .step {
         width: 325rem;
     }
+
+    .section-main {
+        height: 860rem;
+        padding-top: 204rem;
+    }
+
+    .main-block-navigation {
+        right: 40rem;
+    }
 }
 /*end adaptive styles*/
 
@@ -1801,6 +1810,10 @@ body {
 
     .footer-copyright-block::before {
         display: none;
+    }
+
+    .section {
+        padding: 40rem 0;
     }
 
     .page-title {
@@ -1909,6 +1922,42 @@ body {
     .step:nth-child(2) {
         margin-bottom: 16rem;
     }
+
+    .section-main {
+        height: 478rem;
+        padding-top: 130rem;
+        background: url(../img/bg-main-mob.svg) center 0/cover no-repeat;
+    }
+
+    .main-block-navigation {
+        display: none;
+    }
+
+    .main-block {
+        width: 478rem;
+        margin: 0 auto;
+        padding: 16rem 24rem;
+    }
+
+    .main-block::before {
+        top: -50rem;
+        right: -40rem;
+        width: 332rem;
+        height: 332rem;
+    }
+
+    .section-main .page-title {
+        font-weight: 400;
+        font-size: 32rem;
+    }
+
+    .main-text {
+        font-size: 16rem;
+    }
+
+    .main-text span {
+        font-size: 24rem;
+    }
 }
 /*end laptop styles*/
 
@@ -1963,12 +2012,12 @@ body {
         order: 1;
     }
 
-    .section {
-        padding: 40rem 0;
-    }
-
     .page-title {
         font-weight: 400;
+    }
+
+    .faq-wrap {
+        max-height: 436rem;
     }
 
     .faq-item {
@@ -2049,6 +2098,31 @@ body {
     .step:nth-child(3) {
         margin-bottom: 16rem;
     }
+
+    .section-main {
+        height: auto;
+        padding-top: 300rem;
+        padding-bottom: 0;
+        background-size: 480rem;
+    }
+
+    .section-main .container {
+        padding: 0;
+    }
+
+    .main-block {
+        width: 100%;
+        padding: 16rem 20rem;
+        border-radius: 0 0 16rem 16rem;
+    }
+
+    .main-text + .main-text {
+        margin-bottom: 20rem;
+    }
+
+    .main-text span {
+        font-size: 18rem;
+    }
 }
 
 @media (max-width: 375px) {
@@ -2072,6 +2146,16 @@ body {
 
     .game-mainpage-block::before {
         height: 260rem;
+    }
+
+    .section-main {
+        padding-top: 233rem;
+        background-size: 375rem;
+    }
+
+    .main-block::before {
+        top: -40rem;
+        right: -64rem;
     }
 }
 /*end mobile styles*/

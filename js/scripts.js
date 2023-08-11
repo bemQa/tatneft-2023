@@ -198,7 +198,7 @@ $(document).ready(function() {
             nav: true,
             dots: false,
             margin: 0,
-            mouseDrag: true,
+            mouseDrag: false,
             touchDrag: true,
             navSpeed: 1300,
             responsive: {
