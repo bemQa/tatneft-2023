@@ -399,7 +399,7 @@ textarea.input_text {
     color: #E4002B;
 }
 
-.has-error .help-block {
+.has-error .modal_error {
     display: block;
 }
 
