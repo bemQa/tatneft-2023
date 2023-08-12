@@ -393,6 +393,7 @@ textarea.input_text {
 .modal_error {
     display: none;
     position: relative;
+    margin-bottom: 8rem;
     font-size: 14rem;
     line-height: 1.3;
     letter-spacing: 0.14rem;
