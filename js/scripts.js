@@ -100,8 +100,8 @@ $(document).ready(function() {
 
     // маски
     if ($('.phone-mask').length) {
-        $('.phone-mask').inputmask({
-            regex: "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,9}$",
+        $(".phone-mask").inputmask({
+            mask:"+7(999)999-99-99",
             "clearIncomplete": true
         });
     }
@@ -212,6 +212,30 @@ $(document).ready(function() {
                     items: 4
                 }
             }
+        });
+    }
+
+    // select2
+    if($('.select').length > 1) {
+        $('select').each(function() {
+            let $this = $(this).not('.select-search');
+            let parent = $(this).not('.select-search').parents('.select');
+            $this.select2({
+                minimumResultsForSearch: Infinity,
+                dropdownParent: parent
+            });
+        });
+        $('.select-search').each(function() {
+            let $this = $(this);
+            let parent = $(this).parents('.select');
+            $this.select2({
+                dropdownParent: parent
+            });
+        });
+    } else {
+        $('select').select2({
+            minimumResultsForSearch: Infinity,
+            dropdownParent: $('.select')
         });
     }
 });

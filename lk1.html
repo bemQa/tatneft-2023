@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="libs/owl/assets/owl.theme.default.min.css"/>
 	<link rel="stylesheet" href="libs/fancybox/jquery.fancybox.min.css"/>
 	<link rel="stylesheet" href="libs/simplebar/simplebar.css"/>
+	<link rel="stylesheet" href="libs/select2/select2.min.css"/>
 	<link rel="stylesheet" href="fonts/stylesheet.css"/>
 	<link rel="stylesheet" href="css/styles.css"/>
 
@@ -136,6 +137,18 @@
             <div class="ip_cell">
                 <input type="text" class="input_text phone-mask" name="phone" placeholder="+7 (000) 000 00 00 *" required="">
             </div>
+			<div class="ip_cell">
+				<div class="select feedback-select">
+					<select name="ThemeId" data-placeholder="Тип вопроса *" required>
+						<option value=""></option>
+						<option value="1">Вопрос по работе сайта</option>
+						<option value="2">Вопрос по правилам акции</option>
+						<option value="3">Вопрос по продукции</option>
+						<option value="4">Вопрос по призам</option>
+						<option value="5">Другое</option>
+					</select>
+				</div>
+			</div>
             <div class="ip_cell">
                 <textarea class="input_text" name="text" placeholder="Ваш вопрос" required=""></textarea>
             </div>
@@ -156,17 +169,8 @@
 <script src="libs/jquery.inputmask.min.js"></script>
 <script src="libs/jquery.validate.min.js"></script>
 <script src="libs/jquery.countdown.min.js"></script>
+<script src="libs/select2/select2.min.js"></script>
 <script src="js/scripts.js"></script>
-
-<script>
-	let green_volume = 88;
-	let red_volume = 128;
-	let total_volume = green_volume + red_volume;
-	let green_volume_percent = green_volume * 100 / total_volume;
-	let red_volume_percent = red_volume * 100 / total_volume;
-	$('.bonuses-progress-green-team').css('width', green_volume_percent + '%');
-	$('.bonuses-progress-red-team').css('width', red_volume_percent + '%');
-</script>
 
 </body>
 </html>

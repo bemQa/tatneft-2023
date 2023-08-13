@@ -547,6 +547,146 @@ textarea.input_text {
 }
 /*конец формы*/
 
+/* Select2 */
+.select {
+    max-width: 582rem;
+    min-width: 140rem;
+    width: 100%;
+}
+
+.select select {
+    width: 100%;
+}
+
+.select2 {
+    z-index: 2;
+}
+
+.select2.select2-container--open {
+    z-index: 4;
+}
+
+.select2-container--open {
+    z-index: 3;
+}
+
+.select2-container span {
+    outline: none;
+}
+
+.select2-container .select2-selection--single {
+    width: 100%;
+    height: 44rem;
+    padding: 10rem 40rem 10rem 16rem;
+    border: 1rem solid #606060;
+    border-radius: 16rem;
+}
+
+.select2.select2-container--open .select2-selection--single {
+    border: 1rem solid #84BD00;
+}
+
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single, 
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+    border-bottom: 0;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-weight: 400;
+    font-size: 18rem;
+    line-height: 1.3;
+    text-align: left;
+    color: #000;
+    padding-left: 0;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    font-weight: 400;
+    font-size: 18rem;
+    line-height: 1.3;
+    color: #606060;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    width: 20rem;
+    height: 21rem;
+    position: absolute;
+    top: 0;
+    right: 16rem;
+    bottom: 0;
+    margin: auto;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    margin: 0;
+    top: 0;
+    left: 0;
+    border: none;
+    width: 20rem;
+    height: 21rem;
+    background: url(../img/icon-carret.svg) center no-repeat;
+    transition: all .3s ease;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    transform: rotate(-180deg);
+}
+
+.select2-dropdown {
+    background: #fff;
+    border-radius: 0;
+    color: #606060;
+    border: 0;
+}
+
+.select2-container--open .select2-dropdown--below {
+    padding-bottom: 10rem;
+    top: 0;
+    border-bottom-left-radius: 16rem;
+    border-bottom-right-radius: 16rem;
+    border: 1rem solid #84BD00;
+    border-top: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.select2-container--open .select2-dropdown--below::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100% - 32rem);
+    height: 1rem;
+    background: #606060;
+}
+
+.select2-results__options {
+    border-radius: 0;
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+    max-height: 250rem;
+    padding-top: 0;
+}
+
+.select2-results__option {
+    position: relative;
+    font-weight: 400;
+    font-size: 18rem;
+    line-height: 1;
+    min-height: 30rem;
+    padding: 8rem 16rem;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true],
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: transparent;
+    color: #84BD00;
+}
+/**/
+
 /* MODAL */
 .modal:not(.fade) {
     position: absolute;
@@ -584,7 +724,7 @@ textarea.input_text {
     bottom: 0;
     margin: auto;
     padding: 64rem;
-    width: 670rem;
+    width: 710rem;
     height: max-content;
     max-height: 90vh;
     background: #fff;
@@ -1984,6 +2124,157 @@ body {
     min-width: 200rem;
 }
 
+.grecaptcha-badge { 
+    visibility: hidden;
+}
+
+/* кубики */
+.dices {
+    position: relative;
+    width: 178rem;
+    height: 125rem;
+    margin: 8rem auto 48rem;
+}
+
+.dice {
+    position: absolute;
+    width: 112rem;
+    height: 126rem;
+}
+
+.dice1 {
+    top: 15rem;
+    left: 0;
+    background-image: url(../img/dice1-red.png);
+    background: url(../img/dice1-green.png) center/contain no-repeat;
+}
+
+.dice2 {
+    top: 0;
+    right: 0;
+    background-image: url(../img/dice2-red.png);
+    background: url(../img/dice2-green.png) center/contain no-repeat;
+}
+
+.dices.green-team .dice1 {
+    animation: dice1RollGreen 4s linear both;
+}
+
+.dices.green-team .dice2 {
+    animation: dice2RollGreen 4s linear both;
+}
+
+.dices.red-team .dice1 {
+    animation: dice1RollRed 4s linear both;
+}
+
+.dices.red-team .dice2 {
+    animation: dice2RollRed 4s linear both;
+}
+
+@keyframes dice1RollGreen {
+    0% {
+        background-image: url(../img/dice1-green.png);
+    }
+
+    20% {
+        background-image: url(../img/dice1-red.png);
+    }
+
+    40% {
+        background-image: url(../img/dice1-red.png);
+    }
+
+    60% {
+        background-image: url(../img/dice1-red.png);
+    }
+
+    80% {
+        background-image: url(../img/dice1-green.png);
+    }
+
+    100% {
+        background-image: url(../img/dice1-green.png);
+    }
+}
+
+@keyframes dice1RollRed {
+    0% {
+        background-image: url(../img/dice1-green.png);
+    }
+
+    20% {
+        background-image: url(../img/dice1-red.png);
+    }
+
+    40% {
+        background-image: url(../img/dice1-red.png);
+    }
+
+    60% {
+        background-image: url(../img/dice1-red.png);
+    }
+
+    80% {
+        background-image: url(../img/dice1-green.png);
+    }
+
+    100% {
+        background-image: url(../img/dice1-red.png);
+    }
+}
+
+@keyframes dice2RollGreen {
+    0% {
+        background-image: url(../img/dice2-green.png);
+    }
+
+    20% {
+        background-image: url(../img/dice2-green.png);
+    }
+
+    40% {
+        background-image: url(../img/dice2-red.png);
+    }
+
+    60% {
+        background-image: url(../img/dice2-green.png);
+    }
+
+    80% {
+        background-image: url(../img/dice2-red.png);
+    }
+
+    100% {
+        background-image: url(../img/dice2-green.png);
+    }
+}
+
+@keyframes dice2RollRed {
+    0% {
+        background-image: url(../img/dice2-green.png);
+    }
+
+    20% {
+        background-image: url(../img/dice2-green.png);
+    }
+
+    40% {
+        background-image: url(../img/dice2-red.png);
+    }
+
+    60% {
+        background-image: url(../img/dice2-green.png);
+    }
+
+    80% {
+        background-image: url(../img/dice2-red.png);
+    }
+
+    100% {
+        background-image: url(../img/dice2-red.png);
+    }
+}
 /*end main styles*/
 
 /*adaptive styles*/
