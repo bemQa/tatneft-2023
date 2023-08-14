@@ -52,6 +52,9 @@ $(document).ready(function() {
                         required: true,
                         phone: true 
                     },
+                    theme: {
+                        required: true 
+                    },
                     message: {
                         required: true 
                     },
@@ -83,6 +86,9 @@ $(document).ready(function() {
                     name: {
                         required: 'Поле обязательно для заполнения'
                     },
+                    theme: {
+                        required: 'Поле обязательно для заполнения'
+                    },
                     text: {
                         required: 'Поле обязательно для заполнения'
                     }
@@ -94,6 +100,10 @@ $(document).ready(function() {
         });
         jQuery.validator.addMethod('phone', function (value, element) {
             return this.optional(element) || /\+7\(\d+\)\d{3}-\d{2}-\d{2}/.test(value);
+        });
+
+        $('body').on('change', 'select', function() {
+            $(this).valid();
         });
     }
     checkValidate();

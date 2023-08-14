@@ -125,6 +125,24 @@
 	</div>
 </div>
 
+<div class="modal" id="success_modal">
+	<div class="modal_content">
+		<a href="#" class="modal_close" data-fancybox-close></a>
+		<div class="modal_title">Успешно!</div>
+		<div class="modal_text">Ваши данные успешно отправлены! В ближайшее время с вами свяжется менеджер и ответит на ваши вопросы.</div>
+		<button class="btn btn-big btn-team-modal" data-fancybox-close>Закрыть</button>
+	</div>
+</div>
+
+<div class="modal" id="error_modal">
+	<div class="modal_content">
+		<a href="#" class="modal_close" data-fancybox-close></a>
+		<div class="modal_title">Произошла ошибка</div>
+		<div class="modal_text">Не удалось отправить данные. Попробуйте позже или перезагрузите страницу.</div>
+		<button class="btn btn-big btn-team-modal" data-fancybox-close>Закрыть</button>
+	</div>
+</div>
+
 <div class="modal" id="dice_modal">
 	<div class="modal_content">
 		<a href="#" class="modal_close" data-fancybox-close></a>
@@ -134,6 +152,22 @@
 			<div class="dice dice2"></div>
 		</div>
 		<button class="btn btn-big btn-dice-roll">Бросить кубики</button>
+	</div>
+</div>
+
+<div class="modal" id="green-team_modal">
+	<div class="modal_content">
+		<a href="#" class="modal_close" data-fancybox-close></a>
+		<div class="modal_title">Поздравляем! Ваша команда - <span class="green-text">зеленые</span></div>
+		<a href="" class="btn btn-big btn-team-modal">Перейти в личный кабинет</a>
+	</div>
+</div>
+
+<div class="modal" id="red-team_modal">
+	<div class="modal_content">
+		<a href="#" class="modal_close" data-fancybox-close></a>
+		<div class="modal_title">Поздравляем! Ваша команда - <span class="red-text">красные</span></div>
+		<a href="" class="btn btn-big btn-team-modal">Перейти в личный кабинет</a>
 	</div>
 </div>
 
@@ -155,12 +189,12 @@
 	$('.bonuses-progress-green-team').css('width', green_volume_percent + '%');
 	$('.bonuses-progress-red-team').css('width', red_volume_percent + '%');
 
-	//$.fancybox.open({
-	//	src: '#dice_modal',
-	//	type: 'inline'
-	//});
+	$.fancybox.open({
+		src: '#dice_modal',
+		type: 'inline'
+	});
 
-	let team_color = 'red';
+	let team_color = 'green';
 	$('.btn-dice-roll').click(function(e){
 		e.preventDefault();
 		let $this = $(this);
@@ -168,7 +202,13 @@
 		$('.dices').addClass(team_color+'-team');
 		setTimeout(function(){
 			$this.removeClass('disabled');
-		}, 4000)
+			$.fancybox.close();
+
+			$.fancybox.open({
+				src: '#'+team_color+'-team_modal',
+				type: 'inline'
+			});
+		}, 6000);
 	})
 </script>
 

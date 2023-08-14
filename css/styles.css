@@ -2145,134 +2145,186 @@ body {
 .dice1 {
     top: 15rem;
     left: 0;
-    background-image: url(../img/dice1-red.png);
+}
+
+.dice1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background: url(../img/dice1-red.png) center/contain no-repeat;
+}
+
+.dice1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
     background: url(../img/dice1-green.png) center/contain no-repeat;
 }
 
 .dice2 {
     top: 0;
     right: 0;
-    background-image: url(../img/dice2-red.png);
+}
+
+.dice2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background: url(../img/dice2-red.png) center/contain no-repeat;
+}
+
+.dice2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
     background: url(../img/dice2-green.png) center/contain no-repeat;
 }
 
-.dices.green-team .dice1 {
-    animation: dice1RollGreen 4s linear both;
+.dices.green-team .dice1::after {
+    animation: dice1RollGreen 5s .5s linear both;
 }
 
-.dices.green-team .dice2 {
-    animation: dice2RollGreen 4s linear both;
+.dices.green-team .dice2::after {
+    animation: dice2RollGreen 5s .5s linear both;
 }
 
-.dices.red-team .dice1 {
-    animation: dice1RollRed 4s linear both;
+.dices.red-team .dice1::after {
+    animation: dice1RollRed 5s .5s linear both;
 }
 
-.dices.red-team .dice2 {
-    animation: dice2RollRed 4s linear both;
+.dices.red-team .dice2::after {
+    animation: dice2RollRed 5s .5s linear both;
+}
+
+.btn-team-modal {
+    margin-top: 48rem;
 }
 
 @keyframes dice1RollGreen {
     0% {
-        background-image: url(../img/dice1-green.png);
+        opacity: 1;
     }
 
     20% {
-        background-image: url(../img/dice1-red.png);
+        opacity: 0;
     }
 
     40% {
-        background-image: url(../img/dice1-red.png);
+        opacity: 0;
     }
 
     60% {
-        background-image: url(../img/dice1-red.png);
+        opacity: 0;
     }
 
     80% {
-        background-image: url(../img/dice1-green.png);
+        opacity: 1;
     }
 
     100% {
-        background-image: url(../img/dice1-green.png);
+        opacity: 1;
     }
 }
 
 @keyframes dice1RollRed {
     0% {
-        background-image: url(../img/dice1-green.png);
+        opacity: 1;
     }
 
     20% {
-        background-image: url(../img/dice1-red.png);
+        opacity: 0;
     }
 
     40% {
-        background-image: url(../img/dice1-red.png);
+        opacity: 0;
     }
 
     60% {
-        background-image: url(../img/dice1-red.png);
+        opacity: 0;
     }
 
     80% {
-        background-image: url(../img/dice1-green.png);
+        opacity: 1;
     }
 
     100% {
-        background-image: url(../img/dice1-red.png);
+        opacity: 0;
     }
 }
 
 @keyframes dice2RollGreen {
     0% {
-        background-image: url(../img/dice2-green.png);
+        opacity: 1;
     }
 
     20% {
-        background-image: url(../img/dice2-green.png);
+        opacity: 1;
     }
 
     40% {
-        background-image: url(../img/dice2-red.png);
+        opacity: 0;
     }
 
     60% {
-        background-image: url(../img/dice2-green.png);
+        opacity: 1;
     }
 
     80% {
-        background-image: url(../img/dice2-red.png);
+        opacity: 0;
     }
 
     100% {
-        background-image: url(../img/dice2-green.png);
+        opacity: 1;
     }
 }
 
 @keyframes dice2RollRed {
     0% {
-        background-image: url(../img/dice2-green.png);
+        opacity: 1;
     }
 
     20% {
-        background-image: url(../img/dice2-green.png);
+        opacity: 1;
     }
 
     40% {
-        background-image: url(../img/dice2-red.png);
+        opacity: 0;
     }
 
     60% {
-        background-image: url(../img/dice2-green.png);
+        opacity: 1;
     }
 
     80% {
-        background-image: url(../img/dice2-red.png);
+        opacity: 0;
     }
 
     100% {
-        background-image: url(../img/dice2-red.png);
+        opacity: 0;
     }
 }
 /*end main styles*/

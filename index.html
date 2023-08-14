@@ -593,7 +593,7 @@
             </div>
 			<div class="ip_cell">
 				<div class="select feedback-select">
-					<select name="ThemeId" data-placeholder="Тип вопроса *" required>
+					<select name="theme" data-placeholder="Тип вопроса *" required>
 						<option value=""></option>
 						<option value="1">Вопрос по работе сайта</option>
 						<option value="2">Вопрос по правилам акции</option>
@@ -604,7 +604,7 @@
 				</div>
 			</div>
             <div class="ip_cell">
-                <textarea class="input_text" name="text" placeholder="Ваш вопрос" required=""></textarea>
+                <textarea class="input_text" name="text" placeholder="Ваш вопрос"></textarea>
             </div>
             <div class="ip_cell">
 				<input type="checkbox" id="feedback-ch" class="ch" name="reg-ch" required="">
@@ -614,6 +614,24 @@
             	<button class="btn btn-big">Отправить</button>
             </div>
 		</form>
+	</div>
+</div>
+
+<div class="modal" id="success_modal">
+	<div class="modal_content">
+		<a href="#" class="modal_close" data-fancybox-close></a>
+		<div class="modal_title">Успешно!</div>
+		<div class="modal_text">Ваши данные успешно отправлены! В ближайшее время с вами свяжется менеджер и ответит на ваши вопросы.</div>
+		<button class="btn btn-big btn-team-modal" data-fancybox-close>Закрыть</button>
+	</div>
+</div>
+
+<div class="modal" id="error_modal">
+	<div class="modal_content">
+		<a href="#" class="modal_close" data-fancybox-close></a>
+		<div class="modal_title">Произошла ошибка</div>
+		<div class="modal_text">Не удалось отправить данные. Попробуйте позже или перезагрузите страницу.</div>
+		<button class="btn btn-big btn-team-modal" data-fancybox-close>Закрыть</button>
 	</div>
 </div>
 
