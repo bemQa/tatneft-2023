@@ -373,7 +373,57 @@
 							</div>
 						</div>
 						<div class="table-wrapper winners-week-tab-item" data-tab="Неделя 5">
-							
+							<div class="table winners-table">
+								<div class="table-head">
+									<div class="table-row">
+										<div class="table-col">Дата розыгрыша</div>
+										<div class="table-col">Телефон</div>
+										<div class="table-col">Приз</div>
+									</div>
+								</div>
+								<div id="week5" class="table-body">
+									<div class="table-row">
+										<div class="table-col">26.07.2023</div>
+										<div class="table-col">+7 917 *** ** 36</div>
+										<div class="table-col">Велосипед</div>
+									</div>
+									<div class="table-row">
+										<div class="table-col">26.07.2023</div>
+										<div class="table-col">+7 917 *** ** 36</div>
+										<div class="table-col">Велосипед</div>
+									</div>
+									<div class="table-row">
+										<div class="table-col">24.07.2023</div>
+										<div class="table-col">+7 915 *** ** 36</div>
+										<div class="table-col">Велосипед</div>
+									</div>
+									<div class="table-row">
+										<div class="table-col">24.07.2023</div>
+										<div class="table-col">+7 915 *** ** 36</div>
+										<div class="table-col">Велосипед</div>
+									</div>
+									<div class="table-row">
+										<div class="table-col">24.07.2023</div>
+										<div class="table-col">+7 915 *** ** 36</div>
+										<div class="table-col">Велосипед</div>
+									</div>
+									<div class="table-row">
+										<div class="table-col">24.07.2023</div>
+										<div class="table-col">+7 915 *** ** 36</div>
+										<div class="table-col">Велосипед</div>
+									</div>
+									<div class="table-row">
+										<div class="table-col">24.07.2023</div>
+										<div class="table-col">+7 915 *** ** 36</div>
+										<div class="table-col">Велосипед</div>
+									</div>
+									<div class="table-row">
+										<div class="table-col">24.07.2023</div>
+										<div class="table-col">+7 915 *** ** 36</div>
+										<div class="table-col">Велосипед</div>
+									</div>
+								</div>
+							</div>
 						</div>
 						<div class="table-wrapper winners-week-tab-item" data-tab="Неделя 6">
 							
@@ -643,6 +693,13 @@
 <script src="libs/jquery.countdown.min.js"></script>
 <script src="libs/select2/select2.min.js"></script>
 <script src="js/scripts.js"></script>
+
+<!-- пример вызова инициализации скролла при подгрузке -->
+<script>
+	new SimpleBar($('#week5')[0], {
+		autoHide: false  
+	});
+</script>
 
 </body>
 </html>
