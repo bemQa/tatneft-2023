@@ -740,6 +740,16 @@ textarea.input_text {
 
 #form-authorization .fancybox-close-small {
     display: block;
+    top: 14rem;
+    right: 16rem;
+    width: 30rem;
+    height: 30rem;
+    padding: 0;
+    transition: all .3s ease;
+}
+
+#form-authorization .fancybox-close-small:hover {
+    transform: rotate(90deg);
 }
 
 .modal_title {
