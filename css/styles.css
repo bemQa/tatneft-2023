@@ -733,8 +733,13 @@ textarea.input_text {
 }
 
 .modal .fancybox-button--close,
-.modal .fancybox-close-small {
+.modal .fancybox-close-small,
+#form-authorization .close {
     display: none;
+}
+
+#form-authorization .fancybox-close-small {
+    display: block;
 }
 
 .modal_title {
