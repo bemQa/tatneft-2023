@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 30px;
+}
+
+#usefont {
+  font-family: "Cervo";
+  font-size: 0px;
+}
+
+h1 {
+  color: white;
+  background-color: black;
+}
+
+.game-wrap {
+  overflow: hidden;
+  display: flex;
+}

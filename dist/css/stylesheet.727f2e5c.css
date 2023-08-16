@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Cervo';
+    src: url('Cervo-Regular.38253394.woff2') format('woff2'),
+        url('fonts\Cervo-Regular.a4301e8c.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cervo';
+    src: url('Cervo-Thin.8023bca7.woff2') format('woff2'),
+        url('fonts\Cervo-Thin.33a4da24.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cervo';
+    src: url('Cervo-Medium.2e34b82b.woff2') format('woff2'),
+        url('fonts\Cervo-Medium.6d7b31d0.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cervo';
+    src: url('Cervo-Light.d7f8fd7f.woff2') format('woff2'),
+        url('fonts\Cervo-Light.610636ec.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
