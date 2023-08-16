@@ -26,7 +26,7 @@ $(document).ready(function() {
         $('.menu').removeClass('active');
 
         elementClick = $(this).attr("href");
-        destination = $(elementClick).offset().top-150;
+        destination = $(elementClick).offset().top-80;
         $('html, body').animate( { scrollTop: destination }, 500, 'swing' );
         return false;
     });
