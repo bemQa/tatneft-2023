@@ -41669,6 +41669,7 @@ var FuelPistol = /** @class */function () {
     this.isDragging = false;
     this.totalCount = 0;
     this.init();
+    console.log(this.element.getBounds());
   }
   FuelPistol.prototype.init = function () {
     this.placeUI();
@@ -41733,22 +41734,32 @@ var FuelPistol = /** @class */function () {
       stage.on('pointermove', onDragMove);
     };
     var onDragMove = function onDragMove(e) {
+      if (!_this.isDragging) {
+        return;
+      }
       _this.element.parent.toLocal(e.global, null, _this.element.position);
     };
     var onDragEnd = function onDragEnd(e) {
       _this.isDragging = false;
       _this.reset();
       stage.off('pointermove', onDragMove);
+      return;
     };
     this.element.on('pointerdown', onDragStart, this.element);
     stage.on('pointerup', onDragEnd);
     stage.on('pointerupoutside', onDragEnd);
   };
+  FuelPistol.prototype.hitTest = function (obj) {
+    var aBox = this.element.getBounds();
+    var b = obj;
+    var bBox = b.getBounds();
+    return aBox.x + aBox.width > bBox.x && aBox.x < bBox.x + bBox.width && aBox.y + aBox.height > bBox.y && aBox.y < bBox.y + bBox.height;
+  };
   FuelPistol.prototype.setTotalCount = function (val) {
     this.infoText.text = "\u0417\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u043E \u043C\u0430\u0448\u0438\u043D: ".concat(val);
     this.totalCount = val;
   };
-  FuelPistol.prototype.reset = function (x, y) {
+  FuelPistol.prototype.reset = function () {
     this.isDragging = false;
     this.element.x = this.initialPosition._x;
     this.element.y = this.initialPosition._y;
@@ -41866,7 +41877,269 @@ var Layout = /** @class */function () {
 }();
 var _default = Layout;
 exports.default = _default;
-},{}],"Dffd":[function(require,module,exports) {
+},{}],"TVsF":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.appLayoutStyles = void 0;
+var _scene = require("./scene");
+var appLayoutStyles = {
+  //
+  onWideScreen: function onWideScreen(al) {
+    _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
+    console.log('onWideScreen');
+    var bgImg = al.elements[0];
+    var road = al.elements[1];
+    var gas = al.elements[2];
+    var pistol = al.elements[3];
+    var timer = al.elements[4];
+    var cars = al.elements[5].map(function (c) {
+      return c.carSprite;
+    });
+    gas.width = 1600;
+    gas.height = 1000;
+    gas.x = window.innerWidth / 2 - gas.width / 2;
+    gas.y = window.innerHeight - gas.height - 60;
+    road.clear();
+    road.beginFill('#D8D8D8', 1);
+    road.drawRect(0, window.innerHeight - 220, window.innerWidth, 220);
+    road.endFill();
+    bgImg.width = window.innerWidth;
+    bgImg.height = window.innerHeight - 220;
+    bgImg.y = 0;
+    timer.x = timer.x = window.innerWidth / 2 - timer.width / 2;
+    cars.forEach(function (c) {
+      c.scale.set(.8);
+      c.y = 36;
+    });
+    pistol.x = window.innerWidth - pistol.width;
+    pistol.y = window.innerHeight / 2 - pistol.height / 2;
+    pistol.children[0].scale.set(1, 1);
+    pistol.children[0].y = 0;
+  },
+  onDesktop: function onDesktop(al) {
+    _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
+    console.log('onDesktop');
+    var bgImg = al.elements[0];
+    var road = al.elements[1];
+    var gas = al.elements[2];
+    var pistol = al.elements[3];
+    var timer = al.elements[4];
+    var cars = al.elements[5].map(function (c) {
+      return c.carSprite;
+    });
+    gas.width = 1200;
+    gas.height = 750;
+    gas.x = window.innerWidth / 2 - gas.width / 2;
+    gas.y = window.innerHeight - gas.height - 60;
+    road.clear();
+    road.beginFill('#D8D8D8', 1);
+    road.drawRect(0, window.innerHeight - 166, window.innerWidth, 166);
+    road.endFill();
+    // bgImg.width = window.innerWidth;
+    bgImg.height = window.innerHeight - 166;
+    bgImg.y = 0;
+    timer.x = timer.x = window.innerWidth / 2 - timer.width / 2;
+    cars.forEach(function (c) {
+      c.scale.set(.72);
+      c.y = 50;
+    });
+    pistol.x = window.innerWidth - pistol.width;
+    pistol.y = window.innerHeight / 2 - pistol.height / 2;
+    pistol.children[0].scale.set(1, .9);
+    pistol.children[0].y = 20;
+  },
+  onLaptop: function onLaptop(al) {
+    _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
+    console.log('onLaptop');
+    var bgImg = al.elements[0];
+    var road = al.elements[1];
+    var gas = al.elements[2];
+    var pistol = al.elements[3];
+    var timer = al.elements[4];
+    var cars = al.elements[5].map(function (c) {
+      return c.carSprite;
+    });
+    gas.width = 1200;
+    gas.height = 750;
+    gas.x = window.innerWidth / 2 - gas.width / 2;
+    gas.y = window.innerHeight - gas.height - 60;
+    road.clear();
+    road.beginFill('#D8D8D8', 1);
+    road.drawRect(0, window.innerHeight - 166, window.innerWidth, 166);
+    road.endFill();
+    // bgImg.width = window.innerWidth;
+    bgImg.height = window.innerHeight - 166;
+    bgImg.y = 0;
+    timer.x = timer.x = window.innerWidth / 2 - timer.width / 2;
+    timer.scale.set(1);
+    cars.forEach(function (c) {
+      c.scale.set(.72);
+      c.y = 50;
+    });
+    pistol.x = window.innerWidth - pistol.width;
+    pistol.y = window.innerHeight / 2 - pistol.height / 2;
+    pistol.children[0].scale.set(1, .9);
+    pistol.children[0].y = 20;
+  },
+  onTablet: function onTablet(al) {
+    _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
+    console.log('onTablet');
+    var bgImg = al.elements[0];
+    var road = al.elements[1];
+    var gas = al.elements[2];
+    var pistol = al.elements[3];
+    var timer = al.elements[4];
+    var cars = al.elements[5].map(function (c) {
+      return c.carSprite;
+    });
+    var fuelPistol = al.elements[6];
+    gas.width = 768;
+    gas.height = 455;
+    gas.x = window.innerWidth / 2 - gas.width / 2;
+    gas.y = window.innerHeight - gas.height - 100;
+    road.clear();
+    road.beginFill('#D8D8D8', 1);
+    road.drawRect(0, window.innerHeight - 166, window.innerWidth, 166);
+    road.endFill();
+    bgImg.width = 1920;
+    bgImg.height = 1080;
+    bgImg.x = window.innerWidth / 2 - bgImg.width / 2;
+    bgImg.y = window.innerHeight - 166 - bgImg.height;
+    timer.x = 0;
+    timer.y = 0;
+    // timer.scale.set(.8);
+    var timerBg = timer.children[0];
+    var timerDigits = timer.children[1];
+    timerBg.clear();
+    timerBg.beginFill(0xFFFFFF);
+    timerBg.drawRoundedRect(0, 0, window.innerWidth, 92, 0);
+    timerBg.endFill();
+    timerBg.x = 0;
+    timerBg.y = 0;
+    timerDigits.scale.set(.8);
+    timerDigits.x = 20;
+    timerDigits.y = 16;
+    cars.forEach(function (c, i) {
+      c.scale.set(.45);
+      var fuelMeter = al.elements[5][i].fuelMeter.children[0];
+      fuelMeter.x = c.width / 2 - fuelMeter.width / 2;
+      fuelMeter.y = -24;
+      c.y = 100;
+    });
+    pistol.x = 0;
+    pistol.y = 92;
+    // pistol.children[0].width = window.innerWidth + 100;
+    // pistol.children[0].visible = false;
+    // pistol.children[0].addChild(pistolBg)
+    var mobileFuelPistolBg = pistol.children[0].children[1];
+    var desktopFuelPistolBg = pistol.children[0].children[0];
+    desktopFuelPistolBg.visible = false;
+    mobileFuelPistolBg.visible = true;
+    mobileFuelPistolBg.clear();
+    mobileFuelPistolBg.beginFill('white');
+    mobileFuelPistolBg.drawRoundedRect(0, 0, window.innerWidth, 180 + 16, 16);
+    mobileFuelPistolBg.endFill();
+    pistol.children[0].y = -16;
+    pistol.children[1].scale.set(.5);
+    pistol.children[1].x = 12;
+    pistol.children[1].y = 16;
+    var infoText = pistol.children[2];
+    infoText.x = window.innerWidth - 12 - infoText.width;
+    infoText.y = 16;
+    var pistolImg = pistol.children[3];
+    pistolImg.scale.set(.55);
+    pistolImg.x = pistolImg.width * .55;
+    pistolImg.y = pistolImg.height * .55 + 48;
+    fuelPistol.initialPosition._x = pistolImg.width * .55;
+    fuelPistol.initialPosition._y = pistolImg.height * .55 + 48;
+    var pistolArrow = mobileFuelPistolBg.children[0];
+    pistolArrow.x = 152;
+    pistolArrow.y = 64 + 16;
+  },
+  onMobile: function onMobile(al) {
+    _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
+    console.log('onMobile');
+    var bgImg = al.elements[0];
+    var road = al.elements[1];
+    var gas = al.elements[2];
+    var pistol = al.elements[3];
+    var timer = al.elements[4];
+    var cars = al.elements[5].map(function (c) {
+      return c.carSprite;
+    });
+    var fuelPistol = al.elements[6];
+    var pistolbgH = 164;
+    gas.width = 334;
+    gas.height = 208;
+    gas.x = window.innerWidth / 2 - gas.width / 2;
+    gas.y = window.innerHeight - gas.height - 70 - pistolbgH;
+    road.clear();
+    road.beginFill('#D8D8D8', 1);
+    road.drawRect(0, window.innerHeight - 100 - pistolbgH, window.innerWidth, 100);
+    road.endFill();
+    bgImg.width = 1920 * .8;
+    bgImg.height = 1080 * .8;
+    bgImg.x = window.innerWidth / 2 - bgImg.width / 2;
+    bgImg.y = window.innerHeight - 100 - pistolbgH - bgImg.height;
+    // bgImg.height = window.innerHeight - 100 - pistolbgH;
+    // bgImg.y = 0;
+    timer.x = timer.x = window.innerWidth / 2 - timer.width / 2;
+    timer.x = 0;
+    timer.y = 0;
+    var timerBg = timer.children[0];
+    var timerDigits = timer.children[1];
+    timerBg.clear();
+    timerBg.beginFill(0xFFFFFF);
+    timerBg.drawRoundedRect(0, 0, window.innerWidth, 102, 16);
+    timerBg.endFill();
+    timerBg.x = 0;
+    timerBg.y = -16;
+    timerDigits.scale.set(.8);
+    timerDigits.x = 20;
+    timerDigits.y = 16;
+    cars.forEach(function (c, i) {
+      c.scale.set(.2);
+      var fuelMeter = al.elements[5][i].fuelMeter.children[0];
+      fuelMeter.x = c.width / 2 - fuelMeter.width / 2;
+      fuelMeter.y = -fuelMeter.height + 20;
+      c.y = 40;
+    });
+    pistol.x = 0;
+    pistol.y = window.innerHeight - 164;
+    var mobileFuelPistolBg = pistol.children[0].children[1];
+    var desktopFuelPistolBg = pistol.children[0].children[0];
+    desktopFuelPistolBg.visible = false;
+    mobileFuelPistolBg.visible = true;
+    mobileFuelPistolBg.clear();
+    mobileFuelPistolBg.beginFill('white');
+    mobileFuelPistolBg.drawRoundedRect(0, 0, window.innerWidth, 164, 0);
+    mobileFuelPistolBg.endFill();
+    mobileFuelPistolBg.children[1].visible = false;
+    pistol.children[0].y = 0;
+    pistol.children[1].scale.set(.38);
+    pistol.children[1].x = 12;
+    pistol.children[1].y = 16;
+    var infoText = pistol.children[2];
+    infoText.scale.set(.77);
+    infoText.x = window.innerWidth - 12 - infoText.width;
+    infoText.y = 16;
+    var pistolImg = pistol.children[3];
+    pistolImg.scale.set(.45);
+    pistolImg.x = pistolImg.width * .55;
+    pistolImg.y = pistolImg.height * .55 + 48;
+    fuelPistol.initialPosition._x = pistolImg.width * .55;
+    fuelPistol.initialPosition._y = pistolImg.height * .55 + 48;
+    var pistolArrow = mobileFuelPistolBg.children[0];
+    pistolArrow.x = 122;
+    pistolArrow.y = 64;
+    pistolArrow.scale.set(.8);
+  }
+};
+exports.appLayoutStyles = appLayoutStyles;
+},{"./scene":"iReV"}],"Dffd":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41881,6 +42154,7 @@ var _car = _interopRequireDefault(require("./car"));
 var _fuelPistol = _interopRequireDefault(require("./fuelPistol"));
 var _carsPool = _interopRequireDefault(require("./carsPool"));
 var _layout = _interopRequireDefault(require("./layout"));
+var _appLayoutStyles = require("./appLayoutStyles");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -42002,8 +42276,9 @@ var Game = /** @class */function () {
       });
       _this.timer = timer;
       _this.countdown = countdown;
-      _this.start();
+      // this.start();
     };
+
     initBackground();
     initCars();
     initFuelPistol();
@@ -42013,34 +42288,29 @@ var Game = /** @class */function () {
   };
   Game.prototype.gameLogic = function () {
     var _this = this;
-    var carsPool = this.carsPool;
-    var car0 = this.carsPool.cars[0];
     var totalCount = 0;
-    // car0.driveIn();
-    car0.carSprite.eventMode = 'static';
-    car0.carSprite.cursor = 'pointer';
     var intervalId;
     this.carsPool.nextCar();
-    _scene.mainScene.app.stage.on('pointerover', function (e) {
-      e.bubbles = false;
-      if (!_this.fuelPistol.isDragging) {
-        return;
-      }
-      console.log(_this.fuelPistol.isDragging);
-      // intervalId = setInterval(() => {
-      // 	car0.addFuel(3)
-      // }, 50);
-    });
-
+    // mainScene.app.stage.on('pointerover', (e) => {
+    // 	e.bubbles = false;
+    // 	if (!this.fuelPistol.isDragging) { return }
+    // 	console.log(this.fuelPistol.isDragging);
+    // 	// intervalId = setInterval(() => {
+    // 	// 	car0.addFuel(3)
+    // 	// }, 50);
+    // });
     var lastTime = 0;
     _scene.mainScene.app.ticker.add(function (delta) {
       if (!_this.fuelPistol.isDragging && !_this.carsPool.currentCar.isFuelTankFull) {
         _this.carsPool.currentCar.resetFuel();
         return;
       }
-      console.log('TICK');
+      if (!_this.fuelPistol.hitTest(_this.carsPool.currentCar.carSprite)) {
+        return;
+      }
       _this.carsPool.currentCar.showFuel();
-      _this.carsPool.currentCar.addFuel(3 * delta);
+      _this.carsPool.currentCar.addFuel(3 * delta * 0.10);
+      // this.carsPool.currentCar.addFuel(3 * delta);
     });
     // mainScene.app.stage.on('pointerup', (e) => {
     // 	e.bubbles = false;
@@ -42076,7 +42346,6 @@ var Game = /** @class */function () {
     });
   };
   Game.prototype.adaptiveLayouts = function () {
-    var _this = this;
     // aspect ratio resize 
     var size = [window.innerWidth, window.innerHeight];
     var ratio = size[0] / size[1];
@@ -42104,246 +42373,8 @@ var Game = /** @class */function () {
     }
     // resize()
     window.onresize = resize;
-    var assets = __spreadArray(__spreadArray([], this.bgSprites, true), [this.fuelPistol.wrap, this.timer.element, this.carsPool.cars], false);
-    var appLayout = new _layout.default(assets, {
-      onWideScreen: function onWideScreen(al) {
-        _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
-        console.log('onWideScreen');
-        var bgImg = al.elements[0];
-        var road = al.elements[1];
-        var gas = al.elements[2];
-        var pistol = al.elements[3];
-        var timer = al.elements[4];
-        var cars = al.elements[5].map(function (c) {
-          return c.carSprite;
-        });
-        gas.width = 1600;
-        gas.height = 1000;
-        gas.x = window.innerWidth / 2 - gas.width / 2;
-        gas.y = window.innerHeight - gas.height - 60;
-        road.clear();
-        road.beginFill('#D8D8D8', 1);
-        road.drawRect(0, window.innerHeight - 220, window.innerWidth, 220);
-        road.endFill();
-        bgImg.width = window.innerWidth;
-        bgImg.height = window.innerHeight - 220;
-        bgImg.y = 0;
-        timer.x = timer.x = window.innerWidth / 2 - timer.width / 2;
-        cars.forEach(function (c) {
-          c.scale.set(.8);
-          c.y = 36;
-        });
-        pistol.x = window.innerWidth - pistol.width;
-        pistol.y = window.innerHeight / 2 - pistol.height / 2;
-        pistol.children[0].scale.set(1, 1);
-        pistol.children[0].y = 0;
-      },
-      onDesktop: function onDesktop(al) {
-        _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
-        console.log('onDesktop');
-        var bgImg = al.elements[0];
-        var road = al.elements[1];
-        var gas = al.elements[2];
-        var pistol = al.elements[3];
-        var timer = al.elements[4];
-        var cars = al.elements[5].map(function (c) {
-          return c.carSprite;
-        });
-        gas.width = 1200;
-        gas.height = 750;
-        gas.x = window.innerWidth / 2 - gas.width / 2;
-        gas.y = window.innerHeight - gas.height - 60;
-        road.clear();
-        road.beginFill('#D8D8D8', 1);
-        road.drawRect(0, window.innerHeight - 166, window.innerWidth, 166);
-        road.endFill();
-        // bgImg.width = window.innerWidth;
-        bgImg.height = window.innerHeight - 166;
-        bgImg.y = 0;
-        timer.x = timer.x = window.innerWidth / 2 - timer.width / 2;
-        cars.forEach(function (c) {
-          c.scale.set(.72);
-          c.y = 50;
-        });
-        pistol.x = window.innerWidth - pistol.width;
-        pistol.y = window.innerHeight / 2 - pistol.height / 2;
-        pistol.children[0].scale.set(1, .9);
-        pistol.children[0].y = 20;
-      },
-      onLaptop: function onLaptop(al) {
-        _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
-        console.log('onLaptop');
-        var bgImg = al.elements[0];
-        var road = al.elements[1];
-        var gas = al.elements[2];
-        var pistol = al.elements[3];
-        var timer = al.elements[4];
-        var cars = al.elements[5].map(function (c) {
-          return c.carSprite;
-        });
-        gas.width = 1200;
-        gas.height = 750;
-        gas.x = window.innerWidth / 2 - gas.width / 2;
-        gas.y = window.innerHeight - gas.height - 60;
-        road.clear();
-        road.beginFill('#D8D8D8', 1);
-        road.drawRect(0, window.innerHeight - 166, window.innerWidth, 166);
-        road.endFill();
-        // bgImg.width = window.innerWidth;
-        bgImg.height = window.innerHeight - 166;
-        bgImg.y = 0;
-        timer.x = timer.x = window.innerWidth / 2 - timer.width / 2;
-        timer.scale.set(1);
-        cars.forEach(function (c) {
-          c.scale.set(.72);
-          c.y = 50;
-        });
-        pistol.x = window.innerWidth - pistol.width;
-        pistol.y = window.innerHeight / 2 - pistol.height / 2;
-        pistol.children[0].scale.set(1, .9);
-        pistol.children[0].y = 20;
-      },
-      onTablet: function onTablet(al) {
-        _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
-        console.log('onTablet');
-        var bgImg = al.elements[0];
-        var road = al.elements[1];
-        var gas = al.elements[2];
-        var pistol = al.elements[3];
-        var timer = al.elements[4];
-        var cars = al.elements[5].map(function (c) {
-          return c.carSprite;
-        });
-        gas.width = 768;
-        gas.height = 455;
-        gas.x = window.innerWidth / 2 - gas.width / 2;
-        gas.y = window.innerHeight - gas.height - 100;
-        road.clear();
-        road.beginFill('#D8D8D8', 1);
-        road.drawRect(0, window.innerHeight - 166, window.innerWidth, 166);
-        road.endFill();
-        bgImg.y = 0;
-        timer.x = 0;
-        timer.y = 0;
-        // timer.scale.set(.8);
-        var timerBg = timer.children[0];
-        var timerDigits = timer.children[1];
-        timerBg.clear();
-        timerBg.beginFill(0xFFFFFF);
-        timerBg.drawRoundedRect(0, 0, window.innerWidth, 92, 0);
-        timerBg.endFill();
-        timerBg.x = 0;
-        timerBg.y = 0;
-        timerDigits.scale.set(.8);
-        timerDigits.x = 20;
-        timerDigits.y = 16;
-        cars.forEach(function (c) {
-          c.scale.set(.45);
-          c.y = 100;
-        });
-        pistol.x = 0;
-        pistol.y = 92;
-        // pistol.children[0].width = window.innerWidth + 100;
-        // pistol.children[0].visible = false;
-        // pistol.children[0].addChild(pistolBg)
-        var mobileFuelPistolBg = pistol.children[0].children[1];
-        var desktopFuelPistolBg = pistol.children[0].children[0];
-        desktopFuelPistolBg.visible = false;
-        mobileFuelPistolBg.visible = true;
-        mobileFuelPistolBg.clear();
-        mobileFuelPistolBg.beginFill('white');
-        mobileFuelPistolBg.drawRoundedRect(0, 0, window.innerWidth, 180 + 16, 16);
-        mobileFuelPistolBg.endFill();
-        pistol.children[0].y = -16;
-        pistol.children[1].scale.set(.5);
-        pistol.children[1].x = 12;
-        pistol.children[1].y = 16;
-        var infoText = pistol.children[2];
-        infoText.x = window.innerWidth - 12 - infoText.width;
-        infoText.y = 16;
-        var pistolImg = pistol.children[3];
-        pistolImg.scale.set(.55);
-        pistolImg.x = pistolImg.width * .55;
-        pistolImg.y = pistolImg.height * .55 + 48;
-        _this.fuelPistol.initialPosition._x = pistolImg.width * .55;
-        _this.fuelPistol.initialPosition._y = pistolImg.height * .55 + 48;
-        var pistolArrow = mobileFuelPistolBg.children[0];
-        pistolArrow.x = 152;
-        pistolArrow.y = 64 + 16;
-      },
-      onMobile: function onMobile(al) {
-        _scene.mainScene.app.renderer.resize(window.innerWidth, window.innerHeight);
-        console.log('onMobile');
-        var bgImg = al.elements[0];
-        var road = al.elements[1];
-        var gas = al.elements[2];
-        var pistol = al.elements[3];
-        var timer = al.elements[4];
-        var cars = al.elements[5].map(function (c) {
-          return c.carSprite;
-        });
-        var pistolbgH = 164;
-        gas.width = 334;
-        gas.height = 208;
-        gas.x = window.innerWidth / 2 - gas.width / 2;
-        gas.y = window.innerHeight - gas.height - 70 - pistolbgH;
-        road.clear();
-        road.beginFill('#D8D8D8', 1);
-        road.drawRect(0, window.innerHeight - 100 - pistolbgH, window.innerWidth, 100);
-        road.endFill();
-        bgImg.height = window.innerHeight - 100 - pistolbgH;
-        bgImg.y = 0;
-        timer.x = timer.x = window.innerWidth / 2 - timer.width / 2;
-        timer.x = 0;
-        timer.y = 0;
-        // timer.scale.set(.8);
-        var timerBg = timer.children[0];
-        var timerDigits = timer.children[1];
-        timerBg.clear();
-        timerBg.beginFill(0xFFFFFF);
-        timerBg.drawRoundedRect(0, 0, window.innerWidth, 102, 16);
-        timerBg.endFill();
-        timerBg.x = 0;
-        timerBg.y = -16;
-        timerDigits.scale.set(.8);
-        timerDigits.x = 20;
-        timerDigits.y = 16;
-        cars.forEach(function (c) {
-          c.scale.set(.2);
-          c.y = 200;
-        });
-        pistol.x = 0;
-        pistol.y = window.innerHeight - 164;
-        // pistol.children[0].addChild(pistolBg)
-        var mobileFuelPistolBg = pistol.children[0].children[1];
-        var desktopFuelPistolBg = pistol.children[0].children[0];
-        desktopFuelPistolBg.visible = false;
-        mobileFuelPistolBg.visible = true;
-        mobileFuelPistolBg.clear();
-        mobileFuelPistolBg.beginFill('white');
-        mobileFuelPistolBg.drawRoundedRect(0, 0, window.innerWidth, 164, 0);
-        mobileFuelPistolBg.endFill();
-        mobileFuelPistolBg.children[1].visible = false;
-        pistol.children[0].y = 0;
-        pistol.children[1].scale.set(.38);
-        pistol.children[1].x = 12;
-        pistol.children[1].y = 16;
-        var infoText = pistol.children[2];
-        infoText.scale.set(.77);
-        infoText.x = window.innerWidth - 12 - infoText.width;
-        infoText.y = 16;
-        var pistolImg = pistol.children[3];
-        pistolImg.scale.set(.45);
-        pistolImg.x = pistolImg.width * .55;
-        pistolImg.y = pistolImg.height * .55 + 48;
-        _this.fuelPistol.initialPosition._x = pistolImg.width * .55;
-        _this.fuelPistol.initialPosition._y = pistolImg.height * .55 + 48;
-        var pistolArrow = mobileFuelPistolBg.children[0];
-        pistolArrow.x = 122;
-        pistolArrow.y = 64;
-        pistolArrow.scale.set(.8);
-      }
-    });
+    var assets = __spreadArray(__spreadArray([], this.bgSprites, true), [this.fuelPistol.wrap, this.timer.element, this.carsPool.cars, this.fuelPistol], false);
+    var appLayout = new _layout.default(assets, _appLayoutStyles.appLayoutStyles);
   };
   Game.prototype.start = function () {
     console.log(this);
@@ -42353,16 +42384,20 @@ var Game = /** @class */function () {
 }();
 var _default = Game;
 exports.default = _default;
-},{"pixi.js":"DFIJ","./timer":"WwR8","./countdown":"ssQZ","./scene":"iReV","./car":"bHyv","./fuelPistol":"V1gH","./carsPool":"Tuk8","./layout":"Rk1N"}],"QCba":[function(require,module,exports) {
+},{"pixi.js":"DFIJ","./timer":"WwR8","./countdown":"ssQZ","./scene":"iReV","./car":"bHyv","./fuelPistol":"V1gH","./carsPool":"Tuk8","./layout":"Rk1N","./appLayoutStyles":"TVsF"}],"QCba":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 var _game = _interopRequireDefault(require("./core/game"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var game = new _game.default();
-game.onGameOver = function (score) {
-  console.log(score);
-};
-setTimeout(function () {
-  // game.start();
-}, 500);
+window.game = game;
+// game.onGameOver = (score) => {
+// 	// console.log(score);
+// }
+var _default = _game.default;
+exports.default = _default;
 },{"./core/game":"Dffd"}]},{},["QCba"], null)
