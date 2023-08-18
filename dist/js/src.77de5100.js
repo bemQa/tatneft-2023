@@ -42227,8 +42227,8 @@ var Game = /** @class */function () {
     console.log('init game', assets);
     document.querySelector('.game-wrap').appendChild(_scene.mainScene.app.view);
     var initBackground = function initBackground() {
-      var background = PIXI.Sprite.from('bg/bg.jpg');
-      var gasStation = PIXI.Sprite.from('bg/gasstation.png');
+      var background = PIXI.Sprite.from('/dist/bg/bg.jpg');
+      var gasStation = PIXI.Sprite.from('/dist/bg/gasstation.png');
       var globalH = _scene.mainScene.app.view.height;
       var globalW = _scene.mainScene.app.view.width;
       var roadH = 220;
