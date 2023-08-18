@@ -35949,8 +35949,10 @@ var Timer = /** @class */function () {
       countdown: true,
       startValues: {
         minutes: 1
+        // seconds: 5,
       }
     });
+
     this.initView();
     this.timer.addEventListener('secondsUpdated', function (e) {
       var val = _this.timer.getTimeValues().toString().split(':');
@@ -35990,6 +35992,13 @@ var Timer = /** @class */function () {
     container.y = 24;
     this.app.stage.addChild(container);
   };
+  Object.defineProperty(Timer.prototype, "time", {
+    get: function get() {
+      return this.timer.getTimeValues().seconds;
+    },
+    enumerable: false,
+    configurable: true
+  });
   Timer.prototype.start = function () {
     this.timer.start();
   };
@@ -41567,8 +41576,8 @@ var Car = /** @class */function () {
     // 	ease: 'linear',
     // 	angle: 190,
     // })
-    console.log('showFuel');
   };
+
   Car.prototype.hideFuel = function () {
     this.fuelMeterShowed = false;
     _gsap.gsap.to(this.fuelMeter, {
@@ -42182,27 +42191,28 @@ exports.assetsGlobal = assetsGlobal;
 var Game = /** @class */function () {
   function Game() {
     this.totalCount = 0;
+    this.alreadyGameOver = false;
     this.init();
   }
   Game.prototype.init = function () {
     var _this = this;
     PIXI.Assets.addBundle('fonts', {
-      cervoLight: 'fonts/Cervo-Light.woff',
-      cervoMedium: 'fonts/Cervo-Medium.woff',
-      cervoRegular: 'fonts/Cervo-Regular.woff'
+      cervoLight: '/dist/fonts/Cervo-Light.woff',
+      cervoMedium: '/dist/fonts/Cervo-Medium.woff',
+      cervoRegular: '/dist/fonts/Cervo-Regular.woff'
     });
     PIXI.Assets.addBundle('images', {
-      orange: 'cars/orange.png',
-      black: 'cars/black.png',
-      blue: 'cars/blue.png',
-      white: 'cars/white.png',
-      gray: 'cars/gray.png',
-      red: 'cars/red.png',
-      fuelArrow: 'fuel-arrow.png',
-      fuelBg: 'fuel-bg.png',
-      pistol: 'pistol.png',
-      pistolBg: 'pistol-bg.png',
-      arrowBgMobile: 'arrow-mobile.jpg'
+      orange: '/dist/cars/orange.png',
+      black: '/dist/cars/black.png',
+      blue: '/dist/cars/blue.png',
+      white: '/dist/cars/white.png',
+      gray: '/dist/cars/gray.png',
+      red: '/dist/cars/red.png',
+      fuelArrow: '/dist/fuel-arrow.png',
+      fuelBg: '/dist/fuel-bg.png',
+      pistol: '/dist/pistol.png',
+      pistolBg: '/dist/pistol-bg.png',
+      arrowBgMobile: '/dist/arrow-mobile.jpg'
     });
     var imagesBundle = PIXI.Assets.loadBundle('images');
     imagesBundle.then(function (images) {
@@ -42265,20 +42275,24 @@ var Game = /** @class */function () {
       _this.fuelPistol = pistol;
     };
     var initTimers = function initTimers() {
-      var timer = new _timer.default(function () {
-        console.log('timer end');
-        if (_this.onGameOver) {
-          _this.onGameOver(_this.fuelPistol.totalCount);
-        }
-      });
       var countdown = new _countdown.default(function () {
         timer.start();
       });
-      _this.timer = timer;
+      var timer = new _timer.default(function () {
+        console.log('timer end');
+        if (_this.alreadyGameOver) {
+          return;
+        }
+        _this.alreadyGameOver = true;
+        _this.gameOver();
+        if (_this.onGameOver) {
+          _this.onGameOver(_this.fuelPistol.totalCount * 3, _this.timer.time * 1000);
+        }
+      });
       _this.countdown = countdown;
-      // this.start();
+      _this.timer = timer;
+      _this.start();
     };
-
     initBackground();
     initCars();
     initFuelPistol();
@@ -42301,6 +42315,18 @@ var Game = /** @class */function () {
     // });
     var lastTime = 0;
     _scene.mainScene.app.ticker.add(function (delta) {
+      console.log(_this.totalCount);
+      if (_this.totalCount == 5) {
+        if (_this.alreadyGameOver) {
+          return;
+        }
+        _this.alreadyGameOver = true;
+        _this.gameOver();
+        if (_this.onGameOver) {
+          _this.onGameOver(_this.fuelPistol.totalCount * 3, _this.timer.time * 1000);
+        }
+        return;
+      }
       if (!_this.fuelPistol.isDragging && !_this.carsPool.currentCar.isFuelTankFull) {
         _this.carsPool.currentCar.resetFuel();
         return;
@@ -42309,7 +42335,7 @@ var Game = /** @class */function () {
         return;
       }
       _this.carsPool.currentCar.showFuel();
-      _this.carsPool.currentCar.addFuel(3 * delta * 0.10);
+      _this.carsPool.currentCar.addFuel(3 * delta * 0.11);
       // this.carsPool.currentCar.addFuel(3 * delta);
     });
     // mainScene.app.stage.on('pointerup', (e) => {
@@ -42340,10 +42366,16 @@ var Game = /** @class */function () {
         _this.fuelPistol.reset();
         car.resetFuel();
         _this.carsPool.nextCar();
-        console.log('onFuelFull');
-        _this.fuelPistol.setTotalCount(totalCount += 1);
+        // console.log('onFuelFull');
+        _this.totalCount += 1;
+        _this.fuelPistol.setTotalCount(_this.totalCount);
       };
     });
+  };
+  Game.prototype.gameOver = function () {
+    console.log('game over!');
+    this.countdown.overlay.eventMode = 'static';
+    this.fuelPistol.reset();
   };
   Game.prototype.adaptiveLayouts = function () {
     // aspect ratio resize 
