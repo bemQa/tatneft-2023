@@ -42197,22 +42197,22 @@ var Game = /** @class */function () {
   Game.prototype.init = function () {
     var _this = this;
     PIXI.Assets.addBundle('fonts', {
-      cervoLight: 'fonts/Cervo-Light.woff',
-      cervoMedium: 'fonts/Cervo-Medium.woff',
-      cervoRegular: 'fonts/Cervo-Regular.woff'
+      cervoLight: '/dist/fonts/Cervo-Light.woff',
+      cervoMedium: '/dist/fonts/Cervo-Medium.woff',
+      cervoRegular: '/dist/fonts/Cervo-Regular.woff'
     });
     PIXI.Assets.addBundle('images', {
-      orange: 'cars/orange.png',
-      black: 'cars/black.png',
-      blue: 'cars/blue.png',
-      white: 'cars/white.png',
-      gray: 'cars/gray.png',
-      red: 'cars/red.png',
-      fuelArrow: 'fuel-arrow.png',
-      fuelBg: 'fuel-bg.png',
-      pistol: 'pistol.png',
-      pistolBg: 'pistol-bg.png',
-      arrowBgMobile: 'arrow-mobile.jpg'
+      orange: '/dist/cars/orange.png',
+      black: '/dist/cars/black.png',
+      blue: '/dist/cars/blue.png',
+      white: '/dist/cars/white.png',
+      gray: '/dist/cars/gray.png',
+      red: '/dist/cars/red.png',
+      fuelArrow: '/dist/fuel-arrow.png',
+      fuelBg: '/dist/fuel-bg.png',
+      pistol: '/dist/pistol.png',
+      pistolBg: '/dist/pistol-bg.png',
+      arrowBgMobile: '/dist/arrow-mobile.jpg'
     });
     var imagesBundle = PIXI.Assets.loadBundle('images');
     imagesBundle.then(function (images) {
