@@ -71,7 +71,7 @@
 <script src="../libs/jquery.countdown.min.js"></script>
 <script src="../libs/select2/select2.min.js"></script>
 <script src="../js/scripts.js"></script>
-<script src="js/src.77de5100.js"></script>
+<script src="js/src.77de5100-min.js"></script>
 
 <script>
     function declOfNum(n, text_forms) {  
@@ -99,7 +99,7 @@
 
     // при завершении игры склоняем кол-во бонусов и открываем модалку с инфо о завершении игры
     let points_count = $('.points-count');
-    window.game.onGameOver = (score) => {
+    window.game.onGameOver = (score, time) => {
         points_count.html(score + ' ' + declOfNum(score, ['бонус', 'бонуса', 'бонусов']));
         if(score > 0) {
             $.fancybox.open({
