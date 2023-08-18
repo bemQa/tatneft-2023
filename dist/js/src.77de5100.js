@@ -41759,8 +41759,8 @@ var FuelPistol = /** @class */function () {
     stage.on('pointerupoutside', onDragEnd);
   };
   FuelPistol.prototype.hitTest = function (obj) {
-    var aBox = this.element.getBounds();
     var b = obj;
+    var aBox = this.element.getBounds();
     var bBox = b.getBounds();
     return aBox.x + aBox.width > bBox.x && aBox.x < bBox.x + bBox.width && aBox.y + aBox.height > bBox.y && aBox.y < bBox.y + bBox.height;
   };
@@ -42336,7 +42336,7 @@ var Game = /** @class */function () {
         return;
       }
       _this.carsPool.currentCar.showFuel();
-      _this.carsPool.currentCar.addFuel(3 * delta * 0.11);
+      _this.carsPool.currentCar.addFuel(3 * delta * 0.13);
       // this.carsPool.currentCar.addFuel(3 * delta);
     });
     // mainScene.app.stage.on('pointerup', (e) => {
