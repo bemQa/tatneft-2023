@@ -1603,8 +1603,8 @@ body {
 }
 
 .winners-table .table-col {
-    width: 180rem;
-    min-width: 180rem;
+    width: 190rem;
+    min-width: 190rem;
 }
 
 .winners-table .table-col:last-child {
