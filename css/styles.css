@@ -3017,5 +3017,9 @@ body {
         min-width: 116rem;
         padding-right: 8rem;
     }
+
+    .bonuses-teams {
+        font-size: 14rem;
+    }
 }
 /*end mobile styles*/
