@@ -170,7 +170,8 @@ $(document).ready(function() {
         let modal_id = $(this).attr('href');
         $.fancybox.open({
             src: modal_id,
-            type: 'inline'
+            type: 'inline',
+            touch: false
         });
     });
 
