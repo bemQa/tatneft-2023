@@ -1405,7 +1405,7 @@ body {
 .winners-week-tabs {
     position: relative;
     display: none !important;
-    max-width: 830rem;
+    max-width: 1000rem;
     width: 100%;
     min-height: 48rem;
 }
