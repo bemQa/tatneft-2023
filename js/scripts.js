@@ -162,6 +162,9 @@ $(document).ready(function() {
                 <span class="countdown__widget-text">минут</span>
             </div>`
         ));
+    })
+    .on('finish.countdown', function(event) {
+        $(this).parent().find('.end-event-countdown-text').text('Срок регистрации чеков завершен');
     });
 
     // модалки
